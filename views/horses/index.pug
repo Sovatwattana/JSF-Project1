@@ -1,0 +1,50 @@
+extends ../layouts/main.pug
+block pageContent
+    div(class="container is-fluid")
+        table(class="table is-striped")
+            thead
+                tr
+                    th Name
+                    th Rider
+                    th DOB
+                    th Gender
+                    th Height
+                    th Breed
+                    th Sire
+                    th Earnings 
+                    th Starts
+            tbody
+                each horse in horses
+                    tr
+                        td
+                            a(href=`/horses/${horse.id}`)= horse.name
+                        - riderFound = false
+                        - selectedRider
+                        each rider in riders
+                            if rider.id === horse.riderId
+                                - riderFound = true
+                                - selectedRider = rider
+                        td
+                            if (riderFound)
+                                a(href=`/riders/${selectedRider.id}`)= selectedRider.name
+                            else
+                                ='none'
+                        td
+                            p= horse.dateOfBirth.toLocaleDateString()
+                        td
+                            p= horse.gender
+                        td
+                            p= horse.height
+                        td
+                            p= horse.breed
+                        td
+                            p= horse.sire
+                        td
+                            p= horse.earnings
+                        td
+                            p= horse.starts  
+                        td
+                            a.button.is-info(href=`/horses/${horse.id}/edit`) Edit
+                            form.delete(action="/horses/delete", method="POST", onsubmit="return confirm('Are you sure you want to delete this horse?');")
+                                input(type="hidden", name="id", value=horse.id)
+                                input.button.is-warning(type="submit", value="Delete")

@@ -1,0 +1,47 @@
+form(action=(horse ? "/horses/update" : "/horses" ), method="POST")
+    if horse
+        input(type="hidden", name="id", value=horse.id)
+    div.left
+        div.field
+            label.label Name
+            div.control
+                input.input(name="horse[name]", required, value=(horse ? horse.name : null))
+
+        div.field  
+            label.label DOB
+            div.control
+                input.input(name="horse[dateOfBirth]", required, type="date", id="dob", value=(horse ? horse.dateOfBirth : null))
+                    
+        div.field   
+            label.label Gender
+            div.control
+                select(name="horse[gender]", required, value=(horse ? horse.height : null))
+                    option(value="Mare") Mare
+                    option(value="Gelding") Gelding
+
+        div.field
+            label.label Height (hands)
+            div.control
+                input.input(name="horse[height]", required, value=(horse ? horse.height : null))
+    div.right
+        div.field
+            label.label Breed
+            div.control
+                input.input(name="horse[breed]", required, value=(horse ? horse.breed : null))
+
+        div.field
+            label.label Sire
+            div.control
+                input.input(name="horse[sire]", value=(horse ? horse.sire : null))
+
+        div.field
+            label.label Earnings
+            div.control
+                input.input(type="number", name="horse[earnings]", value=(horse ? horse.earnings : null))
+        
+        div.field
+            label.label Starts
+            div.control
+                input.input(type="number", name="horse[starts]", value=(horse ? horse.starts : null))
+
+        button.button.is-primary(type="submit") Submit

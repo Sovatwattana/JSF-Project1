@@ -1,0 +1,29 @@
+extends ../layouts/main.pug
+block pageContent
+    div.container.is-fluid
+        form(action='/users', method="POST")
+            div.field
+                label.label(for='firstName') First Name
+                div.control
+                    input.input(type='text', name='firstName', required, style="width:30%")
+
+            div.field
+                label.label(for='lastName') Last Name
+                div.control
+                    input.input(type='text', name='lastName', required, style="width:30%")
+
+            div.field
+                label.label(for='email') Email Address
+                div.control
+                    input.input(type='email', name='email', required, style="width:30%")
+
+            div.field
+                label.label(for='password') Password (4 characters minimum)
+                div.control
+                    input.input(type='password', name='password', required, minLength='4', style="width:30%")
+
+            div.field
+                label.label(for='passwordConfirmation') Password Confirmation (4 characters minimum)
+                div.control
+                    input.input(type='password', name='passwordConfirmation', required, minLength='4', style="width:30%")
+            input.button.is-primary(type='submit' value='Create User')

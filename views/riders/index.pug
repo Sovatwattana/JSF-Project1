@@ -1,0 +1,38 @@
+extends ../layouts/main.pug
+block pageContent
+    div.container.is-fluid
+        table.table.is-striped
+            thead
+                th Name
+                th Date of Birth
+                th Gender
+                th Last Weigh-in
+                th Earnings ($US)
+                th Horse
+                th
+            tbody
+                each rider in riders
+                    tr
+                        td
+                            a(href=`/riders/${rider.id}`)= rider.name
+                        td= rider.dateOfBirth.toLocaleDateString()
+                        td= rider.gender
+                        td= rider.lastWeighIn
+                        td= rider.earnings
+                        - horseFound = false
+                        if horses
+                            - selectedHorse
+                            each horse in horses
+                                if horse.riderId && horse.riderId === rider.id
+                                    - selectedHorse = horse
+                                    - horseFound = true
+                        td
+                            if(horseFound)
+                                a(href=`/horses/${selectedHorse.id}`)= selectedHorse.name
+                            else
+                                ='None'
+                        td
+                            a.button.is-info(href=`/riders/edit/${rider.id}`) Edit
+                            form.delete(action="/riders/delete", method="post", onsubmit="return confirm('Are you sure you want to delete this rider?');")
+                                input(type="hidden", name="id", value=rider.id)
+                                input.button.is-warning(type="submit" value="Delete")

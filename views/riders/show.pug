@@ -1,0 +1,26 @@
+extends ../layouts/main.pug
+block pageContent
+    p.show-p
+        strong.strong-info Date of Birth: 
+        =rider.dateOfBirth.toLocaleDateString()
+    p.show-p
+        strong Gender: 
+        =rider.gender
+    p.show-p
+        strong last Weigh-in (lb): 
+        =rider.lastWeighIn
+    p.show-p
+        strong Earnings ($US): 
+        =rider.earnings
+    p.show-p
+        strong Horse: 
+        if horse[0]
+            a(href=`/horses/${horse[0].id}`)= horse[0].name
+        else
+            ='none'
+    p.show-p
+        strong Created ON: 
+        =rider.createdAt
+    p.show-p
+        strong Last Updated: 
+        =rider.updatedAt

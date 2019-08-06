@@ -1,0 +1,38 @@
+extends ../layouts/main.pug
+block pageContent
+    div.container.is-fluid
+        table(class="table is-striped")
+            thead
+                tr
+                    th Name
+                    th Rider
+                    th DOB
+                    th Gender
+                    th Height
+                    th Breed
+                    th Sire
+                    th Earnings 
+                    th Starts
+            tbody
+                tr
+                    td
+                        p= horse.name
+                    td
+                        if rider && rider.name
+                            a(href=`/riders/${rider.id}`)= rider.name
+                        else
+                            p= 'none'
+                    td
+                        p= horse.dateOfBirth.toLocaleDateString()
+                    td
+                        p= horse.gender
+                    td
+                        p= horse.height
+                    td
+                        p= horse.breed
+                    td
+                        p= horse.sire
+                    td
+                        p= horse.earnings
+                    td
+                        p= horse.starts

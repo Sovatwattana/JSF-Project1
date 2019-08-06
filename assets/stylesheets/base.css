@@ -1,0 +1,110 @@
+#icon {
+    width: 20%;
+}
+
+a.navbar-item:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color: rgb(9, 33, 59);
+}
+
+a.navbar-item {
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: rgb(181, 225, 231);
+}
+
+.input {
+    width: 50%;
+}
+
+#dob {
+    width: 30%;
+}
+
+.title {
+    padding: 1em;
+}
+
+.left {
+    float: left;
+    width: 50%;
+    padding-left: 4em;
+    position: relative;
+}
+
+.right {
+    float: right;
+    width: 50%;
+    position: relative;
+}
+
+footer {
+    clear: both;
+    position: relative;
+    z-index: 1;
+    height: -3em;
+    margin-bottom: 0;
+    margin-top: 10em;
+}
+
+.tag.is-light {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.foot-img {
+    width: 18%;
+    float: right;
+    position: relative;
+}
+
+.small {
+    position: relative;
+    bottom: -90px;
+}
+
+.horsesDiv {
+    width: 30%;
+    height: 300px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    overflow: auto;
+    /* display: flex;
+    flex-direction: row; */
+    margin-bottom: 1em;
+
+}
+
+.show-p {
+    padding-left: 2em;
+}
+
+.strong-info {
+    /* margin-inline-start: 5em; */
+}
+
+.button.is-info {
+    margin-right: 10%;
+}
+
+.button.is-info:hover {
+    background-color: lime;
+    color: black;
+    text-decoration: none;
+}
+
+.button.is-warning {
+    text-decoration: none;
+}
+
+.button.is-warning:hover {
+    background-color: red;
+    color: white;
+}
+
+a {
+    text-decoration: none !important;
+}

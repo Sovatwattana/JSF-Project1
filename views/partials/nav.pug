@@ -1,0 +1,34 @@
+nav.navbar(role="navigation" aria-label="main navigation")
+      .navbar-brand
+        a.navbar-item(href="/")
+          img(src="/images/herse.png")
+        a.navbar-burger.burger(role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+      #navbarBasicExample.navbar-menu
+        .navbar-start
+          a.navbar-item(href="/")
+            | Home
+          a.navbar-item(href="/horses")
+            | Horses
+          a.navbar-item(href="/riders")
+            | Riders
+          if isAuthenticated
+            a.navbar-item(href="/horses/new")
+              | Add a Horse
+            a.navbar-item(href="/riders/new")
+              | Add a Rider
+        .navbar-end
+        if !isAuthenticated
+          .navbar-item
+            .buttons
+              a.button.is-primary(href="/users/new")
+                strong Register
+              a.button.is-light(href="/sessions/login")
+                | Log in
+        if isAuthenticated
+          .navbar-item
+            form(action="/sessions/logout", method="POST")
+              input.button.is-primary(type="submit", value="Logout")
+       

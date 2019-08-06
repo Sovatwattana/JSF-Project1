@@ -1,0 +1,40 @@
+form(action=(rider ? "/riders/update" : "/riders"), method="post")
+    div.left
+        div.field
+            label.label(for="name") Name
+            div.control
+                input.input(type="text", name="name", required, value=(rider ? rider.name : ""))
+        
+        div.field
+            label.label(for="dateOfBirth") Date of Birth
+            div.control
+                input.input(type="date", name="dateOfBirth", required, value =(rider ? rider.dateOfBirth : ""))
+        
+        div.field
+            label.label(for="gender") Gender
+            div.control
+                select(name="gender", required)
+                    each gender in ['Male', 'Female']
+                        option(value=gender, selected=(rider && rider.gender == gender))= gender
+    div.right  
+        div.field
+            label.label(for="lastWeighIn") Last Weigh-in (lb)
+            div.control
+                input.input(type="number" name="lastWeighIn", required, value=(rider ? rider.lastWeighIn : ""))
+        
+        div.field
+            label.label(for="earnings") Earnings ($US)
+            div.control
+                input.input(type="number", name="earnings", required, value=(rider ? rider.earnings : ""))
+        div.horsesDiv(id="box")
+            if horses
+                each horse in horses
+                    if !(rider && horse.riderId && horse.riderId != rider.id)
+                    div.field
+                        label.label(for=horse.name)
+                        div.control.radioBtn
+                                a.tag.is-light(href=`/horses/${horse.id}`)= horse.name
+                                input.radio(type="radio", name="horseId", value=horse.id, checked=(rider && horse.riderId && horse.riderId == rider.id))
+        if rider
+            input(type="hidden", name="id", value=rider.id)
+        input.button.is-primary(type="submit" value=(rider ? "Update Rider" : "Add Rider"))

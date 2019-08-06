@@ -1,0 +1,14 @@
+extends ../layouts/main.pug
+block pageContent
+    div.container.is-fluid
+        form(action='/sessions/authenticate', method='POST')
+            div.field
+                label.label(for='email') Email Address
+                div.control
+                    input.input(type='email', name='email', required, style="width:30%")
+
+            div.field       
+                label.label(for='password') Password
+                div.control
+                    input.input(type='password', name='password', required, style="width:30%")
+            input.button.is-success(type='submit', value='Login')
